@@ -1,0 +1,11 @@
+#!/bin/bash
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$SCRIPT_DIR/if ssh run"
+
+pkill sshd
+
+if is_ssh_run; then
+    echo ssh is still running.
+else
+    echo ssh has stopped.
+fi

@@ -1,0 +1,16 @@
+#!/bin/bash
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$SCRIPT_DIR/if ssh run"
+for ((i = 0; i < 10; i++)); do
+    if is_ssh_run; then
+        break
+    else
+        sshd
+    fi
+done
+
+if is_ssh_run; then
+    echo ssh started.
+else
+    echo ssh failed to start.
+fi

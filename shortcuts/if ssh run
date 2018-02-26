@@ -1,0 +1,12 @@
+#!/bin/bash
+is_ssh_run() {
+    ps aux | grep -q [s]shd
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    if is_ssh_run; then
+        echo yes
+    else
+        echo no
+    fi
+fi
